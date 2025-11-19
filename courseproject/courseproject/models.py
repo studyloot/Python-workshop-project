@@ -9,3 +9,11 @@ class mstuser(models.Model):
     emailid=models.CharField(unique=True, max_length=45)
     pwd=models.CharField(max_length=13)
     role=models.CharField(max_length=15)  
+
+class course(models.Model):
+    courseid=models.AutoField(primary_key=True)
+    coursename=models.CharField(max_length=20)
+    duration=models.IntegerField()
+    fees=models.IntegerField()
+    coursedetail=models.CharField(max_length=100)
+    courseicon=models.CharField(max_length=60)
