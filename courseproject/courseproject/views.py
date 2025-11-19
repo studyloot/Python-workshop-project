@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from . import models
 from django.contrib.auth import logout
-
+from django.core.files.storage import FileSystemStorage
 
 def register (request):
     if request.method ==  "GET":
@@ -58,3 +58,14 @@ def logout1(request):
     del request.session["role"]
     logout(request)
     return redirect('http://localhost:8000')
+
+def addcourse(request):
+    if request.method=="GET":
+        return render(request,"addcourse.html")
+    else:
+        coursename=request.POST.get("coursename")
+        duration=request.POST.get("duration")
+        fees=request.POST.get("fees")
+        coursedetail=request.POST.get("coursedetail")
+        courseicon=request.POST.get("courseicon")
+        return render(request,"addcourse.html")
