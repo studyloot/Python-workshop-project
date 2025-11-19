@@ -42,4 +42,3 @@ def login(request):
 def studenthome(request):
     return render (request,"studenthome.html")
 
-#ABCDAsdmkasjdklajsdlahsdlkahjslkdaj
