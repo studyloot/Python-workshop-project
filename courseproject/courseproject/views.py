@@ -41,3 +41,5 @@ def login(request):
 #commiting repo
 def studenthome(request):
     return render (request,"studenthome.html")
+
+#ABCDAsdmkasjdklajsdlahsdlkahjslkdaj
