@@ -67,5 +67,9 @@ def addcourse(request):
         duration=request.POST.get("duration")
         fees=request.POST.get("fees")
         coursedetail=request.POST.get("coursedetail")
+        #for file uploading 
         courseicon=request.POST.get("courseicon")
+        fs=FileSystemStorage()
+        courseimg=fs.save(courseicon=courseicon)
+        #.........................................
         return render(request,"addcourse.html")
