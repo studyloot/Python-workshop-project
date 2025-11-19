@@ -46,3 +46,6 @@ def login(request):
 
 def studenthome(request):
     return render(request,"studenthome.html")
+
+def adminhome(request):
+    return render(request,"adminhome.html")
