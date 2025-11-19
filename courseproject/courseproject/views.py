@@ -70,7 +70,7 @@ def addcourse(request):
         #for file uploading 
         courseicon=request.POST.get("courseicon")
         fs=FileSystemStorage()
-        courseimg=fs.save(courseicon=courseicon)
+        courseimg=fs.save(courseicon.name,courseicon)
         #.........................................
          # for save record in database table 
         result=models.course(coursename=coursename,duration=duration,fees=fees,coursedetail=coursedetail,courseicon=courseicon)
