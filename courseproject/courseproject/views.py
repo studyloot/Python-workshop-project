@@ -32,6 +32,8 @@ def login(request):
             print("role- ",role)
             if role =="student":
                 return redirect("/studenthome")
+            elif role=="admin":
+                return redirect("/adminhome/")
         else:
             print("Invalid Email id or Password")
         return render(request,"login.html")
