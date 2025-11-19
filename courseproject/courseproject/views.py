@@ -1,37 +1,41 @@
 from django.shortcuts import render,redirect
 from . import models
-def register(request):
-    if request.method=="GET":
+
+
+def register (request):
+    if request.method ==  "GET":
         return render(request,"registration.html")
-    else: 
+    else:
         fullname=request.POST.get("fullname")
-        gender=request.POST.get("gender")
-        mobile=request.POST.get("mobile")
-        address=request.POST.get("address")
-        emailid=request.POST.get("emailid")
-        pwd=request.POST.get("pwd")
-        role="student"
-        res=models.mstuser(fullname=fullname,gender=gender,mobile=mobile,address=address,emailid=emailid,pwd=pwd,role=role)
+        gender = request.POST.get("gender")
+        mobile = request.POST.get("mobile")
+        address = request.POST.get("address")
+        email = request.POST.get("email")
+        pwd = request.POST.get("pwd")
+        role = "student"
+        res=models.mstuser(fullname=fullname,gender=gender,mobile=mobile,address=address,email=email,pwd=pwd,role=role)
         res.save()
         return render(request,"registration.html")
     
-def home(request):
-    return render(request,"index.html")
-    def login(request):
-        return render(request,"login.html")
+def home (request):
+    return render (request,"index.html")
 
 def login(request):
     if request.method=="POST":
-        emailid=request.POST.get("emailid")
+        email=request.POST.get("email")
         pwd=request.POST.get("pwd")
-        result=models.mstuser.objects.filter(emailid=emailid,pwd=pwd)
+        result=models.mstuser.objects.filter(email=email,pwd=pwd)
         if len(result)>0:
             print("login success")
-            #for fetch role value from database table
-            role=result[0].role
-            print("role- ",role)
+            role = result[0].role
+            print("role : ",role)
+            #for create new session..........................................................
+             
+            request.session["email"]=email
+            request.session["role"]=role
+            #................................................................................
             if role =="student":
-                return redirect("/studenthome")
+                return redirect("/studenthome/")
             elif role=="admin":
                 return redirect("/adminhome/")
         else:
@@ -39,9 +43,6 @@ def login(request):
         return render(request,"login.html")
     else:
         return render(request,"login.html")
-    
-#commiting repo
-def studenthome(request):
-    return render (request,"studenthome.html")
 
-#ABCDAsdmkasjdklajsdlahsdlkahjslkdaj
+def studenthome(request):
+    return render(request,"studenthome.html")
