@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from . import models
+from django.contrib.auth import logout
 
 
 def register (request):
@@ -52,3 +53,8 @@ def studenthome(request):
 def adminhome(request):
     return render(request,"adminhome.html")
 
+def logout1(request):
+    del request.session["email"]
+    del request.session["role"]
+    logout(request)
+    return redirect('http://localhost:8000')

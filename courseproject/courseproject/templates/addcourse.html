@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Login Form</title>
+<title>Course Entry Form</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <!--
@@ -67,7 +67,7 @@ $(window).load(function() {
     <div id="tooplate_menu">
         <ul>
             <li><a href="/adminthome/" class="current">Home</a></li>
-            <li><a href="#">Add course</a></li>
+            <li><a href="/addcourse/">Add course</a></li>
             <li><a href="#">Add Batch</a></li>
             <li><a href="#">Student List</a></li>
             <li><a href="/logout1/">Logout</a></li>
@@ -93,7 +93,36 @@ $(window).load(function() {
     
     	 <div class="col_w900 col_w900_last">
     		<div class="col_w580 float_l">
-<div class="con_tit_01"><span>Welcome Admin </span></div>
+<div class="con_tit_01"><span>Course Entry Form </span></div>
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<table border="1" align="center">
+    <tr>
+        <td> Course Name</td>
+        <td>
+            <input type="text" name="coursename" required>
+        </td>
+    </tr>
+     <tr>
+        <td> Duration</td>
+        <td>
+            <input type="text" name="duration" required>
+        </td>
+    </tr>
+     <tr>
+        <td> Fees</td>
+        <td>
+            <input type="text" name="fees" required>
+        </td>
+    </tr>
+     <tr>
+        <td> Course Details</td>
+        <td>
+            <input type="text" name="coursedetail" required>
+        </td>
+    </tr>
+</table>
+</form>
                     
                    	
                     <div class="cleaner"></div>
