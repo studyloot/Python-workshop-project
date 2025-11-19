@@ -68,7 +68,7 @@ def addcourse(request):
         fees=request.POST.get("fees")
         coursedetail=request.POST.get("coursedetail")
         #for file uploading 
-        courseicon=request.POST.get("courseicon")
+        courseicon=request.POST.FILES["courseicon"]
         fs=FileSystemStorage()
         courseimg=fs.save(courseicon.name,courseicon)
         #.........................................
