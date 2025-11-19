@@ -38,6 +38,6 @@ def login(request):
     else:
         return render(request,"login.html")
     
-
+#commiting repo
 def studenthome(request):
     return render (request,"studenthome.html")
