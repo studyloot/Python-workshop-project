@@ -72,4 +72,7 @@ def addcourse(request):
         fs=FileSystemStorage()
         courseimg=fs.save(courseicon=courseicon)
         #.........................................
+         # for save record in database table 
+        result=models.course(coursename=coursename,duration=duration,fees=fees,coursedetail=coursedetail,courseicon=courseicon)
+        result.save()
         return render(request,"addcourse.html")
