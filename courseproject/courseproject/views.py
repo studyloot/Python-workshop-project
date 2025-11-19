@@ -47,5 +47,8 @@ def login(request):
 def studenthome(request):
     return render(request,"studenthome.html")
 
+#admin request added 
+
 def adminhome(request):
     return render(request,"adminhome.html")
+
