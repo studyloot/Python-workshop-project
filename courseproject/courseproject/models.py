@@ -1,0 +1,11 @@
+from django.db import models
+
+class mstuser(models.Model):
+    sno=models.AutoField(primary_key=True)
+    fullname=models.CharField(max_length=40)
+    gender=models.CharField(max_length=10)
+    mobile=models.BigIntegerField()
+    address=models.CharField(max_length=60)
+    emailid=models.CharField(unique=True, max_length=45)
+    pwd=models.CharField(max_length=13)
+    role=models.CharField(max_length=15)  
