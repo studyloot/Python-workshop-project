@@ -80,4 +80,4 @@ def addcourse(request):
     
 def courselist(request):
     res=models.course.objects.all()
-    return render(request,"courselist.html",{"res:",res})
+    return render(request,"courselist.html",{"res:":res})
