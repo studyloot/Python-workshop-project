@@ -102,6 +102,7 @@ $(window).load(function() {
         <th>fees </th>
         <th>course details </th>
     </tr>
+    {% for x in res %}
     <tr>
         {% for x in res %}
         <td>{{ x.courseid }}</td>

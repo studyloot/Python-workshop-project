@@ -3,6 +3,7 @@ from . import models
 from django.contrib.auth import logout
 from django.core.files.storage import FileSystemStorage
 
+
 def register (request):
     if request.method ==  "GET":
         return render(request,"registration.html")
@@ -67,12 +68,12 @@ def addcourse(request):
         duration=request.POST.get("duration")
         fees=request.POST.get("fees")
         coursedetail=request.POST.get("coursedetail")
-        #for file uploading 
-        courseicon=request.POST.FILES["courseicon"]
+         #for file uploading 
+        courseicon=request.FILES["courseicon"]
         fs=FileSystemStorage()
         courseimg=fs.save(courseicon.name,courseicon)
         #.........................................
-         # for save record in database table 
+        # for save record in database table 
         result=models.course(coursename=coursename,duration=duration,fees=fees,coursedetail=coursedetail,courseicon=courseicon)
         result.save()
         return render(request,"addcourse.html")
