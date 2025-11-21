@@ -30,4 +30,5 @@ urlpatterns = [
     path('courselist/',views.courselist),
     path('addbatch/',views.addbatch),
     path('studentlist/',views.studentlist),
+    path('batchlist2/',views.batchlist2),
 ]

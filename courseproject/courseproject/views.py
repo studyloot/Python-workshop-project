@@ -101,3 +101,12 @@ def batchlist1(request):
 def studentlist(request):
     res=models.mstuser.objects.filter(role="student")
     return render(request,"studentlist.html",{"res":res})
+
+def courselist1(request):
+    res=models.course.objects.all()
+    print(res)  
+    return render(request,"courselist1.html",{"res":res})
+
+def batchlist2(request):
+    res=models.batch.objects.all()
+    return render(request,"batchlist2.html",{"res":res})
