@@ -76,3 +76,7 @@ def addcourse(request):
         result=models.course(coursename=coursename,duration=duration,fees=fees,coursedetail=coursedetail,courseicon=courseicon)
         result.save()
         return render(request,"addcourse.html")
+    
+def courselist(request):
+    res=models.course.objects.all()
+    return render(request,"courselist.html",{"res:",res})
