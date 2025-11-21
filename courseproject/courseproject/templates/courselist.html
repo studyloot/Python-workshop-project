@@ -104,13 +104,13 @@ $(window).load(function() {
     </tr>
     {% for x in res %}
     <tr>
-        {% for x in res %}
         <td>{{ x.courseid }}</td>
         <td>{{ x.coursename }}</td>
         <td>{{ x.duration }}</td>
         <td>{{ x.fees }}</td>
         <td>{{ x.coursedetail }}</td>
     </tr>
+    {% endfor %}
 </table> 
                    	
                     <div class="cleaner"></div>
