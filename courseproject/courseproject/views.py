@@ -110,3 +110,10 @@ def courselist1(request):
 def batchlist2(request):
     res=models.batch.objects.all()
     return render(request,"batchlist2.html",{"res":res})
+
+def viewprofile(request):
+    #if request.method=="GET":
+        email=request.session.get("email")
+        result=models.mstuser.objects.filter(email=email)
+        return render(request,"viewprofile.html",{"result":result})
+    #else:

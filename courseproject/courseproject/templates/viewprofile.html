@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Batch List</title>
+<title>View Profile</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <!--
@@ -66,11 +66,11 @@ $(window).load(function() {
     
     <div id="tooplate_menu">
         <ul>
-            <li><a href="/adminhome/" class="current">Home</a></li>
-            <li><a href="/courselist/">Course list</a></li>
-            <li><a href="/batchlist1/">Batch List</a></li>
-            <li><a href="/register/">Register</a></li>
-            <li><a href="/login/">Login</a></li>
+            <li><a href="/studenthome/" class="current">Home</a></li>
+            <li><a href="/courselist1/">Course list</a></li>
+            <li><a href="/batchlist2/">Batch List</a></li>
+            <li><a href="/viewprofile/">View profile</a></li>
+            <li><a href="/logout1">Logout</a></li>
         </ul>    	
         
         <div id="search_box">
@@ -93,23 +93,36 @@ $(window).load(function() {
     
     	 <div class="col_w900 col_w900_last">
     		<div class="col_w580 float_l">
-<div class="con_tit_01"><span>Batch List</span></div>
-<table border="1" align="center">
+<div class="con_tit_01"><span>Profile Details </span></div>
+{% for x in result %}
+<table>
     <tr>
-        <th>Batch No. </th>
-        <th>Batch Title </th>
-        <th>Start Date </th>
-        <th>Faculty Name</th>
+        <td>Sr. No</td>
+        <td>{{ x.sno }}</td>
     </tr>
-    {% for x in res %}
     <tr>
-        <td>{{ x.batchno }}</td>
-        <td>{{ x.batchtitle }}</td>
-        <td>{{ x.startdate }}</td>
-        <td>{{ x.facultyname }}</td>
+        <td>Name</td>
+        <td><input type="text" value="{{ x.fullname }}"></td>
     </tr>
-    {% endfor %}
-</table> 
+    <tr>
+        <td>Gender</td>
+        <td><input type="text" value="{{ x.gender }}"></td>
+    </tr>
+    <tr>
+        <td>Mobile Number</td>
+        <td><input type="text" value="{{ x.mobile }}"></td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td><input type="text" value="{{ x.address }}"></td>
+    </tr>
+    <tr>
+        <td>Email Id </td>
+        <td><input type="text" value="{{ x.email }}"></td>
+    </tr>
+    
+</table>
+{% endfor %}
                    	
                     <div class="cleaner"></div>
            </div>
