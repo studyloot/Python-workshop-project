@@ -97,3 +97,7 @@ def addbatch(request):
 def batchlist1(request):
     res=models.batch.objects.all()
     return render(request,"batchlist1.html",{"res":res})
+
+def studentlist(request):
+    res=models.mstuser.objects.filter(role="student")
+    return render(request,"studentlist.html",{"res":res})

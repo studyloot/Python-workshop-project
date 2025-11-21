@@ -29,4 +29,5 @@ urlpatterns = [
     path('addcourse/',views.addcourse),
     path('courselist/',views.courselist),
     path('addbatch/',views.addbatch),
+    path('studentlist/',views.studentlist),
 ]
