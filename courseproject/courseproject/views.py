@@ -80,4 +80,16 @@ def addcourse(request):
     
 def courselist(request):
     res=models.course.objects.all()
-    return render(request,"courselist.html",{"res:":res})
+    print(res)  
+    return render(request,"courselist.html",{"res":res})
+
+def addbatch(request):
+    if request.method=="POST":
+        batchtitle=request.POST.get("batchtitle")
+        startdate=request.POST.get("startdate")
+        facultyname=request.POST.get("facultyname")
+        obj=models.batch(batchtitle=batchtitle,startdate=startdate,facultyname=facultyname)
+        obj.save()
+        return render(request,"addbatch.html")
+    else:
+        return render(request,"addbatch.html")

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Login Form</title>
+<title>Add batch</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <!--
@@ -68,7 +68,7 @@ $(window).load(function() {
         <ul>
             <li><a href="/adminthome/" class="current">Home</a></li>
             <li><a href="/addcourse/">Add course</a></li>
-            <li><a href="/addbatch/">Add Batch</a></li>
+            <li><a href="#">Add Batch</a></li>
             <li><a href="#">Student List</a></li>
             <li><a href="/logout1/">Logout</a></li>
         </ul>    	
@@ -93,8 +93,29 @@ $(window).load(function() {
     
     	 <div class="col_w900 col_w900_last">
     		<div class="col_w580 float_l">
-<div class="con_tit_01"><span>Welcome Admin </span></div>
-                    
+<div class="con_tit_01"><span>Batch Entry Form</span></div>
+<form method="post">
+{% csrf_token %}
+<table border="1" align="center">
+    <tr>
+        <td>Batch Title</td>
+        <td><input type="text" name="batchtitle" required></td>
+    </tr>
+    <tr>
+        <td>Start Date</td>
+        <td><input type="date" name="startdate" required></td>
+    </tr>
+     <tr>
+        <td>Faculty Name</td>
+        <td><input type="text" name="facultyname" required></td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <input type="submit" value="save">
+        </td>
+    </tr>
+</table>
+</form>
                    	
                     <div class="cleaner"></div>
            </div>

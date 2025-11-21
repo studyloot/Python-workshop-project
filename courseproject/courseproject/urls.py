@@ -25,6 +25,8 @@ urlpatterns = [
     path('login/', views.login),
     path('studenthome/', views.studenthome),
     path('adminhome/', views.adminhome),
+    path('logout1/',views.logout1),
     path('addcourse/',views.addcourse),
     path('courselist/',views.courselist),
+    path('addbatch/',views.addbatch),
 ]
