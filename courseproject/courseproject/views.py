@@ -93,3 +93,7 @@ def addbatch(request):
         return render(request,"addbatch.html")
     else:
         return render(request,"addbatch.html")
+    
+def batchlist1(request):
+    res=models.batch.objects.all()
+    return render(request,"batchlist1.html",{"res":res})
