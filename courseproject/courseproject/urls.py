@@ -31,5 +31,6 @@ urlpatterns = [
     path('addbatch/',views.addbatch),
     path('studentlist/',views.studentlist),
     path('batchlist2/',views.batchlist2),
-    path('viewprofile/',views.viewprofile)
+    path('viewprofile/',views.viewprofile),
+    path('admission/',views.admission),
 ]
