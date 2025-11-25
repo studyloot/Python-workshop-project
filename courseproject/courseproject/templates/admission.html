@@ -102,7 +102,23 @@ $(window).load(function() {
     <td>Batch No.</td>
     <td><input type="text" name="batchno" value="{{ x.batchno }}" readonly></td>
    </tr>
-        
+   <tr>
+    <td>Batch Title</td>
+    <td><input type="text" name="batchtitle" value="{{ x.batchtitle }}" readonly></td>
+   </tr>
+   <tr>
+    <td>Start Date</td>
+    <td><input type="date" name="startdate" value="{{ x.startdate }}" readonly></td>
+   </tr>
+   <tr>
+    <td>Faculty Name</td>
+    <td><input type="text" name="facultyname" value="{{ x.facultyname }}" readonly></td>
+   </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <input type="submit" value="Book Batch">
+        </td>
+    </tr>
     </table> 
 </form>
 {% endfor %}
