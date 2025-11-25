@@ -29,8 +29,11 @@ urlpatterns = [
     path('addcourse/',views.addcourse),
     path('courselist/',views.courselist),
     path('addbatch/',views.addbatch),
+    path('batchlist1/',views.batchlist1),
     path('studentlist/',views.studentlist),
+    path('courselist1/',views.courselist1),
     path('batchlist2/',views.batchlist2),
     path('viewprofile/',views.viewprofile),
     path('admission/',views.admission),
+    path('success/',views.success),
 ]

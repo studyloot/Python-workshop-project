@@ -28,4 +28,4 @@ class admission(models.Model):
     admissionno=models.AutoField(primary_key=True)
     batchno=models.IntegerField()
     admissiondate=models.DateField()
-    emailid=models.CharField(max_length=45)
+    email=models.CharField(max_length=45)

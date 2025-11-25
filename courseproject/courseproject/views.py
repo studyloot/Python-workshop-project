@@ -133,4 +133,7 @@ def admission(request):
         admissiondate=x.strftime("%Y-%m-%d")
         res=models.admission(batchno=batchno,admissiondate=admissiondate,email=email)
         res.save()
-        return render(request,"admission.html")
+        return render(request,"success.html",{"res":""})
+    
+def success(request):
+    return render(request,"success.html")

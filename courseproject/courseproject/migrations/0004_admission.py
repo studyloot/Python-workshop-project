@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
                 ('admissionno', models.AutoField(primary_key=True, serialize=False)),
                 ('batchno', models.IntegerField()),
                 ('admissiondate', models.DateField()),
-                ('emailid', models.CharField(max_length=45)),
+                ('email', models.CharField(max_length=45)),
             ],
         ),
     ]
