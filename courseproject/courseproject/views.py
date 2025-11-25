@@ -116,4 +116,10 @@ def viewprofile(request):
         email=request.session.get("email")
         result=models.mstuser.objects.filter(email=email)
         return render(request,"viewprofile.html",{"result":result})
-    #else:
+
+def admission(request):
+    if request.method=="GET":
+        #to fetch data 
+        batchno=request.GET.get("batchno")
+        print(batchno)
+        return render(request, "admission.html")
