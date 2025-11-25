@@ -122,7 +122,7 @@ def admission(request):
         #to fetch data 
         batchno=request.GET.get("batchno")
         print(batchno)
-        return render(request, "admission.html")
+        #return render(request, "admission.html")
         res=models.batch.objects.filter(batchno=batchno)
         return render(request,"admission.html",{"res":res})
     else:
