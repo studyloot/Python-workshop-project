@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from . import models
 from django.contrib.auth import logout
 from django.core.files.storage import FileSystemStorage
+import datetime
 
 
 def register (request):
@@ -122,8 +123,14 @@ def admission(request):
         #to fetch data 
         batchno=request.GET.get("batchno")
         print(batchno)
-        #return render(request, "admission.html")
         res=models.batch.objects.filter(batchno=batchno)
         return render(request,"admission.html",{"res":res})
     else:
+        #for fetch emailid by session
+        email=request.session.get("email")
+        batchno=request.POST.get("batchno")
+        x=datetime.datetime.now()
+        admissiondate=x.strftime("%Y-%m-%d")
+        res=models.admission(batchno=batchno,admissiondate=admissiondate,email=email)
+        res.save()
         return render(request,"admission.html")
