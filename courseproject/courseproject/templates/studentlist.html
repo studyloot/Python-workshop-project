@@ -1,10 +1,9 @@
-
 {% load static %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Student List</title>
+<title>Students List</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <!--
@@ -67,7 +66,7 @@ $(window).load(function() {
     <div id="tooplate_menu">
         <ul>
             <li><a href="/adminhome/" class="current">Home</a></li>
-            <li><a href="/addcourse/">Add course</a></li>
+            <li><a href="/addcourse/">Add Course</a></li>
             <li><a href="/addbatch/">Add Batch</a></li>
             <li><a href="/studentlist/">Student List</a></li>
             <li><a href="/logout1/">Logout</a></li>
@@ -93,15 +92,15 @@ $(window).load(function() {
     
     	 <div class="col_w900 col_w900_last">
     		<div class="col_w580 float_l">
-<div class="con_tit_01"><span>Student List</span></div>
+<div class="con_tit_01"><span>Students List</span></div>
 <table border="1" align="center">
 <tr>
-    <th>Sr. No</th>
+    <th>Sr. No.</th>
     <th>Name</th>
     <th>Gender</th>
     <th>Mobile No.</th>
     <th>Address</th>
-    <th>Email Id</th>
+    <th>Email id</th>
 </tr>
 {% for i in res %}
 <tr>
@@ -110,10 +109,11 @@ $(window).load(function() {
     <td>{{ i.gender }}</td>
     <td>{{ i.mobile }}</td>
     <td>{{ i.address }}</td>
-    <td>{{ i.email }}</td>
+    <td>{{ i.emailid }}</td>
 </tr>
 {% endfor %}
-</table>                 
+</table>
+                    
                    	
                     <div class="cleaner"></div>
            </div>

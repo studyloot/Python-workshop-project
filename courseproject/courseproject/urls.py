@@ -17,14 +17,18 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
+#for display image
+from django.conf.urls.static import static  
+from django.conf import settings
+media_url=settings.MEDIA_URL
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/', views.register),
-    path('', views.home),
-    path('login/', views.login),
-    path('studenthome/', views.studenthome),
-    path('adminhome/', views.adminhome),
+    path('register/',views.register),
+    path('',views.home),
+    path('login/',views.login),
+    path('studenthome/',views.studenthome),
+    path('adminhome/',views.adminhome),
     path('logout1/',views.logout1),
     path('addcourse/',views.addcourse),
     path('courselist/',views.courselist),
@@ -35,5 +39,6 @@ urlpatterns = [
     path('batchlist2/',views.batchlist2),
     path('viewprofile/',views.viewprofile),
     path('admission/',views.admission),
-    path('success/',views.success),
-]
+    path('success/',views.success),  
+        
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

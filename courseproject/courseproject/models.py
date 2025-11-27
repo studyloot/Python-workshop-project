@@ -6,7 +6,7 @@ class mstuser(models.Model):
     gender=models.CharField(max_length=10)
     mobile=models.BigIntegerField()
     address=models.CharField(max_length=60)
-    email=models.CharField(unique=True,max_length=45)
+    emailid=models.CharField(unique=True,max_length=45)
     pwd=models.CharField(max_length=13)
     role=models.CharField(max_length=15)
 
@@ -25,7 +25,10 @@ class batch(models.Model):
     facultyname=models.CharField(max_length=40)
 
 class admission(models.Model):
-    admissionno=models.AutoField(primary_key=True)
-    batchno=models.IntegerField()
-    admissiondate=models.DateField()
-    email=models.CharField(max_length=45)
+   admissionno=models.AutoField(primary_key=True)
+   batchno=models.IntegerField()
+   admissiondate=models.DateField()
+   emailid=models.CharField(max_length=45)
+
+    
+    

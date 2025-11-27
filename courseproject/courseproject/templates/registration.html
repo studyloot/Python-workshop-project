@@ -65,11 +65,11 @@ $(window).load(function() {
     
     <div id="tooplate_menu">
         <ul>
-            <li><a href="#" class="current">Home</a></li>
-            <li><a href="#">Courses</a></li>
-            <li><a href="#">Batches</a></li>
-            <li><a href="#">Register</a></li>
-            <li><a href="#">Login</a></li>
+            <li><a href="/" class="current">Home</a></li>
+            <li><a href="/courselist/">Courses</a></li>
+            <li><a href="/batchlist1/">Batches</a></li>
+            <li><a href="/register/">Register</a></li>
+            <li><a href="/login/">Login</a></li>            
         </ul>    	
         
         <div id="search_box">
@@ -129,7 +129,8 @@ $(window).load(function() {
 <tr>
      <td>password</td>
      <td>
-      <input type="password" name="pwd" required>
+      <input type="password" name="pwd" minlength="8"
+      maxlength="13" required>
      </td>
 </tr>
 <tr>     

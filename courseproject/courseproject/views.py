@@ -3,137 +3,145 @@ from . import models
 from django.contrib.auth import logout
 from django.core.files.storage import FileSystemStorage
 import datetime
+#for display image
+from django.conf import settings
+media_url=settings.MEDIA_URL
 
-
-def register (request):
-    if request.method ==  "GET":
+def register(request):
+    if request.method=="GET":
         return render(request,"registration.html")
     else:
         fullname=request.POST.get("fullname")
-        gender = request.POST.get("gender")
-        mobile = request.POST.get("mobile")
-        address = request.POST.get("address")
-        email = request.POST.get("email")
-        pwd = request.POST.get("pwd")
-        role = "student"
-        res=models.mstuser(fullname=fullname,gender=gender,mobile=mobile,address=address,email=email,pwd=pwd,role=role)
+        gender=request.POST.get("gender")
+        mobile=request.POST.get("mobile")
+        address=request.POST.get("address")
+        emailid=request.POST.get("emailid")
+        pwd=request.POST.get("pwd")
+        role="student"
+        res=models.mstuser(fullname=fullname,gender=gender
+                           ,mobile=mobile,address=address,
+                           emailid=emailid,pwd=pwd,role=role)
         res.save()
         return render(request,"registration.html")
-    
-def home (request):
-    return render (request,"index.html")
+
+def home(request):
+    return render(request,"index.html")
 
 def login(request):
     if request.method=="POST":
-        email=request.POST.get("email")
-        pwd=request.POST.get("pwd")
-        result=models.mstuser.objects.filter(email=email,pwd=pwd)
-        if len(result)>0:
-            print("login success")
-            role = result[0].role
-            print("role : ",role)
-            #for create new session..........................................................
-             
-            request.session["email"]=email
-            request.session["role"]=role
-            #................................................................................
-            if role =="student":
-                return redirect("/studenthome/")
-            elif role=="admin":
-                return redirect("/adminhome/")
-        else:
-            print("Invalid Email id or Password")
-        return render(request,"login.html")
+     emailid=request.POST.get("emailid")
+     pwd=request.POST.get("pwd")
+     result=models.mstuser.objects.filter(emailid=emailid,pwd=pwd)
+     if len(result)>0:
+        print("login success")
+        #for fetch role value from database table
+        role=result[0].role
+        print("role -",role)    
+        #for create new session ......................
+        request.session["emailid"]=emailid
+        request.session["role"]=role
+        #.............................................
+        if role=="student":
+         return redirect("/studenthome/")   
+        elif role=="admin":
+         return redirect("/adminhome/")  
+        #=====================================================
+     else:
+        print("Invalid email id or password")   
+     return render(request,"login.html")
     else:
-        return render(request,"login.html")
+     return render(request,"login.html")   
 
 def studenthome(request):
-    return render(request,"studenthome.html")
-
-#admin request added 
+ return render(request,"studenthome.html")   
 
 def adminhome(request):
-    return render(request,"adminhome.html")
+   return render(request,"adminhome.html")
 
 def logout1(request):
-    del request.session["email"]
-    del request.session["role"]
-    logout(request)
-    return redirect('http://localhost:8000')
+  del  request.session["emailid"]
+  del request.session["role"]
+  logout(request)
+  return redirect('http://localhost:8000/')
 
 def addcourse(request):
-    if request.method=="GET":
-        return render(request,"addcourse.html")
-    else:
-        coursename=request.POST.get("coursename")
-        duration=request.POST.get("duration")
-        fees=request.POST.get("fees")
-        coursedetail=request.POST.get("coursedetail")
-         #for file uploading 
-        courseicon=request.FILES["courseicon"]
-        fs=FileSystemStorage()
-        courseimg=fs.save(courseicon.name,courseicon)
-        #.........................................
-        # for save record in database table 
-        result=models.course(coursename=coursename,duration=duration,fees=fees,coursedetail=coursedetail,courseicon=courseicon)
-        result.save()
-        return render(request,"addcourse.html")
-    
+   if request.method=="GET":
+      return render(request,"addcourse.html")
+   else:
+      coursename=request.POST.get("coursename")
+      duration=request.POST.get("duration")
+      fees=request.POST.get("fees")
+      coursedetail=request.POST.get("coursedetail")
+      #for file uploading ........................
+      courseicon=request.FILES["courseicon"]
+      fs=FileSystemStorage()
+      courseimg=fs.save(courseicon.name,courseicon)
+      #..........................................   
+      # for save record in table -------------------
+      result=models.course(coursename=coursename,duration=duration,
+                           fees=fees,coursedetail=coursedetail,
+                           courseicon=courseicon)  
+      result.save()  
+      return render(request,"addcourse.html")
+
 def courselist(request):
-    res=models.course.objects.all()
-    print(res)  
-    return render(request,"courselist.html",{"res":res})
+   res=models.course.objects.all()
+   return render(request,"courselist.html",
+                 {"res":res,'media_url':media_url})   
 
 def addbatch(request):
-    if request.method=="POST":
-        batchtitle=request.POST.get("batchtitle")
-        startdate=request.POST.get("startdate")
-        facultyname=request.POST.get("facultyname")
-        obj=models.batch(batchtitle=batchtitle,startdate=startdate,facultyname=facultyname)
-        obj.save()
-        return render(request,"addbatch.html")
-    else:
-        return render(request,"addbatch.html")
-    
+   if request.method=="POST":
+      batchtitle=request.POST.get("batchtitle")
+      startdate=request.POST.get("startdate")
+      facultyname=request.POST.get("facultyname")
+      obj=models.batch(batchtitle=batchtitle,startdate=startdate,
+                       facultyname=facultyname)
+      obj.save()
+
+      return render(request,"addbatch.html") 
+   else:
+      return render(request,"addbatch.html")
+
 def batchlist1(request):
-    res=models.batch.objects.all()
-    return render(request,"batchlist1.html",{"res":res})
+   res=models.batch.objects.all()
+   return render(request,"batchlist1.html",{"res":res})   
 
 def studentlist(request):
-    res=models.mstuser.objects.filter(role="student")
-    return render(request,"studentlist.html",{"res":res})
+   res=models.mstuser.objects.filter(role="student")
+   return render(request,"studentlist.html",{"res":res})
 
 def courselist1(request):
-    res=models.course.objects.all()
-    print(res)  
-    return render(request,"courselist1.html",{"res":res})
+   res=models.course.objects.all()
+   return render(request,"courselist1.html",
+                 {"res":res,'media_url':media_url})  
 
 def batchlist2(request):
-    res=models.batch.objects.all()
-    return render(request,"batchlist2.html",{"res":res})
+   res=models.batch.objects.all()
+   return render(request,"batchlist2.html",{"res":res}) 
 
 def viewprofile(request):
-    #if request.method=="GET":
-        email=request.session.get("email")
-        result=models.mstuser.objects.filter(email=email)
-        return render(request,"viewprofile.html",{"result":result})
+   #if request.method=="GET":
+      emailid=request.session.get("emailid")
+      result=models.mstuser.objects.filter(emailid=emailid)
+      return render(request,"viewprofile.html",{"result":result})
 
 def admission(request):
-    if request.method=="GET":
-        #to fetch data 
-        batchno=request.GET.get("batchno")
-        print(batchno)
-        res=models.batch.objects.filter(batchno=batchno)
-        return render(request,"admission.html",{"res":res})
-    else:
-        #for fetch emailid by session
-        email=request.session.get("email")
-        batchno=request.POST.get("batchno")
-        x=datetime.datetime.now()
-        admissiondate=x.strftime("%Y-%m-%d")
-        res=models.admission(batchno=batchno,admissiondate=admissiondate,email=email)
-        res.save()
-        return render(request,"success.html",{"res":""})
-    
+   if request.method=="GET":
+      #for fetch data from query string
+      batchno=request.GET.get("batchno")
+      print(batchno)
+      res=models.batch.objects.filter(batchno=batchno)
+      return render(request,"admission.html",{"res":res})   
+   else:
+      #for fetch email id by session
+      emailid=request.session.get("emailid")
+      batchno=request.POST.get("batchno")
+      x=datetime.datetime.now()
+      admissiondate=x.strftime("%Y-%m-%d")
+      res=models.admission(batchno=batchno,
+                     admissiondate=admissiondate,emailid=emailid)
+      res.save()
+      return render(request,"success.html",{"res":""})   
+
 def success(request):
-    return render(request,"success.html")
+   return render(request,"success.html")   

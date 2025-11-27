@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -66,12 +65,12 @@ $(window).load(function() {
     
     <div id="tooplate_menu">
         <ul>
-            <li><a href="/adminhome/" class="current">Home</a></li>
-            <li><a href="/courselist/">Course list</a></li>
+            <li><a href="/" class="current">Home</a></li>
+            <li><a href="/courselist/">Course List</a></li>
             <li><a href="/batchlist1/">Batch List</a></li>
             <li><a href="/register/">Register</a></li>
             <li><a href="/login/">Login</a></li>
-        </ul>    	
+        </ul>  	
         
         <div id="search_box">
             <form action="#" method="get">
@@ -95,21 +94,21 @@ $(window).load(function() {
     		<div class="col_w580 float_l">
 <div class="con_tit_01"><span>Batch List</span></div>
 <table border="1" align="center">
-    <tr>
-        <th>Batch No. </th>
-        <th>Batch Title </th>
-        <th>Start Date </th>
-        <th>Faculty Name</th>
-    </tr>
-    {% for x in res %}
-    <tr>
-        <td>{{ x.batchno }}</td>
-        <td>{{ x.batchtitle }}</td>
-        <td>{{ x.startdate }}</td>
-        <td>{{ x.facultyname }}</td>
-    </tr>
-    {% endfor %}
-</table> 
+<tr>
+    <th>Batch No.</th>
+    <th>Batch Title</th>
+    <th>Start Date</th>
+    <th>Faculty Name</th>    
+</tr>
+{% for x in res %}
+<tr>
+    <td>{{ x.batchno }}</td>
+    <td>{{ x.batchtitle }}</td>
+    <td>{{ x.startdate }}</td>
+    <td>{{ x.facultyname }}</td>                 
+</tr>
+{% endfor %}
+</table>                    
                    	
                     <div class="cleaner"></div>
            </div>
